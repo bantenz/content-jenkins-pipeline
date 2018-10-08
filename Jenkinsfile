@@ -1,17 +1,17 @@
-pipeline { 
+pipeline {
   agent any
-  stages { 
+  stages {
     stage('build') {
       steps {
         sh 'javac -d . src/*.java'
-        sh 'echo Main-Class: Rectangulator > MANIFEST.MF' 
+        sh 'echo Main-Class: Rectangulator > MANIFEST.MF'
         sh 'jar -cvmf MANIFEST.MF rectangle.jar *.class'
-      } 
+      }
     }
     stage('run') {
       steps {
-        sh 'jave -jar rectangle.jar 7 9'
+        sh 'java -jar rectangle.jar 7 9'
       }
     }
-  } 
+  }
 }
